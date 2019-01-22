@@ -2,6 +2,10 @@ function cipherMessage(message, key) {
   let secret = "";
   key = key % 95;
 
+  if (message === "") {
+    return "Please add message to cipher";
+  }
+
   for (let i = 0; i < message.length; i++) {
     let asciiChar = message[i].charCodeAt(0);
     if (asciiChar < 32 || asciiChar > 126) {
@@ -26,7 +30,8 @@ function cipher() {
   if (key === "") {
     document.getElementById("keyMessage").textContent =
       "Please input a number to complete cipher";
-    return;
+  } else {
+    document.getElementById("keyMessage").textContent = "";
   }
 
   const msg = cipherMessage(message, key);
